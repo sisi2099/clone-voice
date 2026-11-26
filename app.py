@@ -22,7 +22,7 @@ from dotenv import load_dotenv
 from waitress import serve
 load_dotenv()
 
-web_address = os.getenv('WEB_ADDRESS', '127.0.0.1:9988')
+web_address = os.getenv('WEB_ADDRESS', '0.0.0.0:9988')
 enable_sts = int(os.getenv('ENABLE_STS', '0'))
 
 
@@ -223,7 +223,7 @@ def apitts():
             result = msg
             app.logger.info(f"[apitts]{msg=}")
         if result['code'] == 0:
-            result['url'] = f'http://{web_address}/static/ttslist/{filename}'
+            result['url'] = request.host_url.rstrip('/') + f'/static/ttslist/{filename}'
         return jsonify(result)
     except Exception as e:
         msg = f'{str(e)} {str(e.args)}'
