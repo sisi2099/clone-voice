@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "sisi2099-clone-voice",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-26",
+  "observability": { "enabled": true },
+  "containers": [
+    {
+      "class_name": "TTSContainer",
+      "image": "./Dockerfile",
+      "max_instances": 1,
+      "instance_type": "standard-4"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      { "name": "TTS_CONTAINER", "class_name": "TTSContainer" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["TTSContainer"] }
+  ]
+}
