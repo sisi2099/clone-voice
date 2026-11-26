@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-11-26",
   "observability": { "enabled": true },
+  "vars": { "COQUI_TOS_AGREED": "0" },
   "containers": [
     {
       "class_name": "TTSContainer",
