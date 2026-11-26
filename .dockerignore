@@ -13,3 +13,8 @@ runapp.bat
 runtrain.bat
 # Ignore generated files
 **/*.pyc
+
+tts_cache/
+models/
+static/ttslist/
+static/voice/
