@@ -9,11 +9,15 @@ export class TTSContainer extends Container {
   defaultPort = 9988;
   sleepAfter = "10m";
   enableInternet = true;
-  envVars = {
-    WEB_ADDRESS: "0.0.0.0:9988",
-    ENABLE_STS: "0",
-    COQUI_TOS_AGREED: "0",
-  };
+
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+    this.envVars = {
+      WEB_ADDRESS: "0.0.0.0:9988",
+      ENABLE_STS: "0",
+      COQUI_TOS_AGREED: env.COQUI_TOS_AGREED ?? "0",
+    };
+  }
 }
 
 export default {
